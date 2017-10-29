@@ -1,9 +1,9 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD']=='GET'){
-
+$btn="";
 }else{
-
+$btn="<button type='button' class='btn btn-default' name='button'><a href='./archivo.txt' style='color:orange;' download> Resultado</a></button>";
 $resultado="No se encontro ninguna instrucción";
   if($fp = fopen($_FILES['fileTXT']['name'], "r")){
     $i=1;
@@ -45,9 +45,11 @@ $resultado="No se encontro ninguna instrucción";
             $resultado = "El mensaje no contiene instrucciones";
 
           }
-
-
         }
+        
+        $file = fopen("archivo.txt", "a+");
+        fputs($file,$resultado);
+        fclose($file);
 
       }else {
         # code...
@@ -89,7 +91,9 @@ $resultado="No se encontro ninguna instrucción";
         </form>
          <h1 style="font-family: 'Kaushan Script', cursive;">Resultado de la busqueda</h1>
          <h3><?php echo empty($resultado)? ".... .... .... .... .... .... .... ....":$resultado; ?></h3>
+          <?php echo $btn;?>
       </div>
+
     </div>
 
 
