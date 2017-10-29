@@ -5,7 +5,7 @@ $btn="";
 }else{
 $btn="<button type='button' class='btn btn-default' name='button'><a href='./archivo.txt' style='color:orange;' download> Resultado</a></button>";
 $resultado="No se encontro ninguna instrucción";
-  if($fp = fopen($_FILES['fileTXT']['name'], "r")){
+  if($fp = fopen($_FILES['fileTXT']['tmp_name'], "r")){
     $i=1;
     $lista=[];
     $instrucciones="";
